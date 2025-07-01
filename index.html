@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diff Checker Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/controls.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-dark accent-blue">
+    <header>
+        <!-- Removed the title and description -->
+    </header>
+    
+    <main class="container">
+        <section id="input-section" class="card">
+            <div class="card-header">
+                <h2><i class="fas fa-keyboard"></i> Input & Comparison</h2>
+                <div class="controls-group">
+                    <label for="format-select">Format:</label>
+                    <select id="format-select">
+                        <option value="json" selected>JSON</option>
+                        <option value="text">Plain Text</option>
+                        <option value="csv">CSV</option>
+                    </select>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="input-container">
+                    <div class="input-area">
+                        <h3><i class="fas fa-file-alt"></i> Original Content</h3>
+                        <div class="editor-container">
+                            <textarea id="input1" placeholder="Paste your original content here...&#10;&#10;Supports plain text, CSV, and JSON formats"></textarea>
+                            <div id="diff-overlay-1" class="diff-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="input-area">
+                        <h3><i class="fas fa-file-edit"></i> Modified Content</h3>
+                        <div class="editor-container">
+                            <textarea id="input2" placeholder="Paste your modified content here...&#10;&#10;Changes will be highlighted automatically"></textarea>
+                            <div id="diff-overlay-2" class="diff-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="controls">
+                    <div class="controls-group primary-controls">
+                        <button id="compare-btn" class="button button-primary">
+                            <i class="fas fa-search"></i> Compare Now
+                        </button>
+                        <button id="toggle-unchanged" class="button button-secondary">
+                            <i class="fas fa-eye-slash"></i> Hide Unchanged
+                        </button>
+                        <button id="clear-btn" class="button button-danger">
+                            <i class="fas fa-trash-alt"></i> Clear All
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="ai-section" class="card">
+            <div class="card-header">
+                <h2><i class="fas fa-brain"></i> AI-Powered Analysis</h2>
+            </div>
+            <div class="card-content">
+                <div id="ai-report" class="ai-report">
+                    <div class="placeholder-message">
+                        <i class="fas fa-robot fa-3x"></i>
+                        <p>AI will analyze your comparison and provide detailed insights about the changes, patterns, and impact.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; <span id="current-year"></span> Diff Checker Pro. Built with ❤️ for developers.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="lib/diff-lib.js"></script>
+    <script src="js/formatters/text-formatter.js"></script>
+    <script src="js/formatters/csv-formatter.js"></script>
+    <script src="js/formatters/json-formatter.js"></script>
+    <script src="js/diff-engine.js"></script>
+    <script src="js/ai-analysis.js"></script>
+    <script src="js/ui-controller.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Set current year in the footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

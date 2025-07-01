@@ -1,0 +1,45 @@
+/* Add this at the appropriate location in your CSS file */
+
+.diff-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    display: none; /* Initially hidden, shown by JS */
+    z-index: 10;
+    overflow: auto;
+}
+
+.diff-lines {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.line-highlight {
+    height: 20.8px; /* Match line height in text areas */
+    width: 100%;
+    display: block;
+}
+
+.line-added {
+    background-color: rgba(0, 255, 0, 0.15);
+}
+
+.line-removed {
+    background-color: rgba(255, 0, 0, 0.15);
+}
+
+/* Animation for first difference highlight */
+@keyframes diffFlash {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+@keyframes diffFlash {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}

@@ -1,0 +1,126 @@
+/* Controls styling */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding: 10px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.controls-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.primary-controls {
+    flex: 1;
+    min-width: 280px;
+    justify-content: flex-start;
+}
+
+.option-controls {
+    min-width: 240px;
+    justify-content: flex-end;
+}
+
+/* Button styling */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    font-size: 0.95rem;
+    gap: 6px;
+}
+
+.button i {
+    font-size: 0.9rem;
+}
+
+.button-primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.button-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+.button-secondary {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.button-secondary:hover {
+    background-color: var(--hover-bg);
+}
+
+.button-danger {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.button-danger:hover {
+    background-color: rgba(var(--removed-bg-rgb), 0.2);
+    color: var(--removed-text);
+}
+
+/* Checkbox styling */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.checkbox-container:hover {
+    background-color: var(--hover-bg);
+}
+
+.checkbox-container input {
+    margin-right: 6px;
+}
+
+.checkbox-container span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+}
+
+.checkbox-container i {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .controls-group {
+        width: 100%;
+    }
+    
+    .option-controls {
+        justify-content: flex-start;
+    }
+}

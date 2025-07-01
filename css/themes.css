@@ -1,0 +1,325 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+textarea, select, button {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+.diff-output {
+    background-color: #2d2d2d;
+    border-color: #444;
+}
+
+.added {
+    background-color: #254625;
+    color: #9ccc9c;
+}
+
+.removed {
+    background-color: #592929;
+    color: #ffb6b6;
+}
+
+.diff-highlight {
+    background-color: #4a4210;
+    color: #ffeb3b;
+}
+
+.header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #ccc;
+}
+
+.footer {
+    padding: 10px;
+    text-align: center;
+    border-top: 2px solid #ccc;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-light {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.button-dark {
+    background-color: #555;
+    color: #fff;
+}
+
+.diff-highlight {
+    background-color: #ffeb3b;
+    font-weight: bold;
+}
+
+.ai-report {
+    background-color: #2d2d2d;
+    border-color: #444;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.vertical-comparison .comparison-container {
+    display: flex;
+    gap: 20px;
+    height: 100%;
+}
+
+.vertical-comparison .column {
+    flex: 1;
+}
+
+.vertical-comparison .line-numbers {
+    padding-right: 10px;
+    text-align: right;
+    border-right: 1px solid #666;
+    color: #888;
+    user-select: none;
+}
+
+.diff-controls {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #2d2d2d;
+    border: 1px solid #444;
+}
+
+.inline-diff .added {
+    background-color: rgba(40, 167, 69, 0.3);
+    text-decoration: none;
+}
+
+.inline-diff .removed {
+    background-color: rgba(220, 53, 69, 0.3);
+    text-decoration: line-through;
+}
+
+.theme-dark .inline-diff .added {
+    background-color: rgba(40, 167, 69, 0.2);
+}
+
+.theme-dark .inline-diff .removed {
+    background-color: rgba(220, 53, 69, 0.2);
+}
+
+/* Clean theme variations */
+.theme-light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-muted: #adb5bd;
+  --border-color: #dee2e6;
+  --border-subtle: #e9ecef;
+  --shadow-primary: rgba(0, 0, 0, 0.1);
+  --shadow-elevated: rgba(0, 0, 0, 0.15);
+  --added-bg: rgba(46, 160, 67, 0.1);
+  --removed-bg: rgba(248, 81, 73, 0.1);
+  --changed-bg: rgba(255, 193, 7, 0.1);
+}
+
+.theme-dark {
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #222222;
+  --bg-elevated: #2a2a2a;
+  --bg-card: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8b8;
+  --text-muted: #888888;
+  --border-color: #333333;
+  --border-subtle: #2a2a2a;
+  --shadow-primary: rgba(0, 0, 0, 0.3);
+  --shadow-elevated: rgba(0, 0, 0, 0.5);
+  --added-bg: rgba(46, 160, 67, 0.15);
+  --removed-bg: rgba(248, 81, 73, 0.15);
+  --changed-bg: rgba(255, 193, 7, 0.15);
+}
+
+/* Accent color themes */
+.accent-blue {
+  --accent-primary: #0066ff;
+  --accent-secondary: #0052cc;
+  --accent-hover: #0080ff;
+  --accent-light: rgba(0, 102, 255, 0.1);
+}
+
+.accent-purple {
+  --accent-primary: #8b5cf6;
+  --accent-secondary: #7c3aed;
+  --accent-hover: #a855f7;
+  --accent-light: rgba(139, 92, 246, 0.1);
+}
+
+.accent-green {
+  --accent-primary: #10b981;
+  --accent-secondary: #059669;
+  --accent-hover: #34d399;
+  --accent-light: rgba(16, 185, 129, 0.1);
+}
+
+.accent-orange {
+  --accent-primary: #f59e0b;
+  --accent-secondary: #d97706;
+  --accent-hover: #fbbf24;
+  --accent-light: rgba(245, 158, 11, 0.1);
+}
+
+.accent-red {
+  --accent-primary: #ef4444;
+  --accent-secondary: #dc2626;
+  --accent-hover: #f87171;
+  --accent-light: rgba(239, 68, 68, 0.1);
+}
+
+/* High contrast mode */
+.theme-high-contrast {
+  --bg-primary: #000000;
+  --bg-secondary: #111111;
+  --bg-tertiary: #222222;
+  --bg-elevated: #333333;
+  --bg-card: #111111;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #999999;
+  --accent-primary: #00ff00;
+  --accent-secondary: #00cc00;
+  --accent-hover: #33ff33;
+  --accent-light: rgba(0, 255, 0, 0.1);
+  --border-color: #666666;
+  --border-subtle: #444444;
+  --shadow-primary: rgba(0, 0, 0, 0.8);
+  --shadow-elevated: rgba(0, 0, 0, 0.9);
+  --added-bg: rgba(0, 255, 0, 0.2);
+  --added-text: #00ff00;
+  --added-border: #00ff00;
+  --removed-bg: rgba(255, 0, 0, 0.2);
+  --removed-text: #ff0000;
+  --removed-border: #ff0000;
+  --changed-bg: rgba(255, 255, 0, 0.2);
+  --changed-text: #ffff00;
+  --changed-border: #ffff00;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Preserve animation performance */
+.card, .button, .input-area {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+/* Syntax highlighting for code */
+.code-keyword {
+  color: #569cd6;
+}
+
+.code-string {
+  color: #ce9178;
+}
+
+.code-comment {
+  color: #6a9955;
+}
+
+.code-number {
+  color: #b5cea8;
+}
+
+.code-property {
+  color: #9cdcfe;
+}
+
+/* Advanced UI elements */
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: var(--accent-primary);
+  color: white;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  border: 1px solid var(--border-color);
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Diff highlighting - advanced */
+.inline-diff ins {
+  background-color: var(--added-bg);
+  color: var(--added-text);
+  text-decoration: none;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.inline-diff del {
+  background-color: var(--removed-bg);
+  color: var(--removed-text);
+  text-decoration: line-through;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* Loading spinner for async operations */
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: var(--accent-primary);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
