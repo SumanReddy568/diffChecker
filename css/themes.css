@@ -118,6 +118,188 @@ textarea, select, button {
     background-color: rgba(220, 53, 69, 0.2);
 }
 
+/* Dark theme (default) */
+.theme-dark {
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #222222;
+    --bg-elevated: #2a2a2a;
+    --bg-card: #1e1e1e;
+    --text-primary: #ffffff;
+    --text-secondary: #b8b8b8;
+    --text-muted: #888888;
+    --border-color: #333333;
+    --border-subtle: #2a2a2a;
+    --shadow-primary: rgba(0, 0, 0, 0.3);
+    --shadow-elevated: rgba(0, 0, 0, 0.5);
+    --added-bg-rgb: 34, 197, 94;
+    --removed-bg-rgb: 239, 68, 68;
+}
+
+/* Light theme - with improved text contrast */
+.theme-light {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --bg-tertiary: #eeeeee;
+    --bg-elevated: #e8e8e8;
+    --bg-card: #ffffff;
+    --text-primary: #000000; /* True black for maximum contrast */
+    --text-secondary: #333333; /* Darker secondary text */
+    --text-muted: #666666; /* Darker muted text */
+    --border-color: #dddddd;
+    --border-subtle: #eeeeee;
+    --shadow-primary: rgba(0, 0, 0, 0.1);
+    --shadow-elevated: rgba(0, 0, 0, 0.15);
+    --added-bg-rgb: 34, 197, 94;
+    --removed-bg-rgb: 239, 68, 68;
+    --added-text: #007700; /* Darker green for better contrast */
+    --removed-text: #cc0000; /* Darker red for better contrast */
+    --added-bg: rgba(34, 197, 94, 0.15);
+    --removed-bg: rgba(239, 68, 68, 0.15);
+    --added-border: #22c55e;
+    --removed-border: #ef4444;
+}
+
+/* Ensure text inputs have proper colors in light mode */
+.theme-light textarea, 
+.theme-light input, 
+.theme-light select, 
+.theme-light button,
+.theme-light .button {
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+}
+
+/* Ensure all button text is clearly visible */
+.theme-light .button-primary {
+    color: white; /* Keep primary buttons with white text */
+    background-color: var(--accent-primary);
+}
+
+.theme-light .button-secondary,
+.theme-light .button-danger {
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+}
+
+/* Make AI analysis text visible in light mode */
+.theme-light .ai-report,
+.theme-light .ai-report h3,
+.theme-light .ai-report h4,
+.theme-light .ai-report p,
+.theme-light .ai-report ul,
+.theme-light .ai-report li {
+    color: var(--text-primary);
+}
+
+/* Ensure card headers and content have correct text color */
+.theme-light .card-header h2,
+.theme-light .card-content,
+.theme-light .controls-group label,
+.theme-light .placeholder-message p {
+    color: var(--text-primary);
+}
+
+/* Ensure textarea placeholder text is visible */
+.theme-light textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* Override any global text styling */
+.theme-light * {
+    color: inherit;
+}
+
+/* Accent colors - work with both light and dark themes */
+.accent-blue {
+    --accent-primary: #0066ff;
+    --accent-secondary: #0052cc;
+    --accent-hover: #0080ff;
+    --accent-light: rgba(0, 102, 255, 0.1);
+    --added-bg: rgba(34, 197, 94, 0.2);
+    --added-text: #22c55e;
+    --added-border: #22c55e;
+    --removed-bg: rgba(239, 68, 68, 0.2);
+    --removed-text: #ef4444;
+    --removed-border: #ef4444;
+}
+
+/* Fix header style to properly display GitHub link and theme toggle */
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Header controls styling */
+.header-controls {
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+}
+
+.github-link, .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    border: 1px solid var(--border-color);
+}
+
+.github-link {
+    text-decoration: none;
+}
+
+.github-link:hover {
+    background: var(--accent-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.theme-toggle {
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background: var(--bg-tertiary);
+    transform: translateY(-2px);
+}
+
+/* Fix icon display in theme toggle */
+.theme-toggle i.fa-moon, .theme-toggle i.fa-sun {
+    display: block;
+}
+
+.theme-light .theme-toggle i.fa-moon {
+    display: none;
+}
+
+.theme-light .theme-toggle i.fa-sun {
+    display: block;
+}
+
+.theme-dark .theme-toggle i.fa-moon {
+    display: block;
+}
+
+.theme-dark .theme-toggle i.fa-sun {
+    display: none;
+}
+
+/* Always start with sun hidden */
+.theme-toggle i.fa-sun {
+    display: none;
+}
+
 /* Clean theme variations */
 .theme-light {
   --bg-primary: #ffffff;
@@ -322,4 +504,44 @@ textarea, select, button {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Fix AI report background in light mode */
+.theme-light .ai-report {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.theme-light #ai-section .card-content {
+    background-color: var(--bg-primary);
+}
+
+.theme-light .placeholder-message {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.theme-light .placeholder-message i {
+    color: var(--accent-primary);
+}
+
+/* Ensure AI insights and sections have correct background and text colors */
+.theme-light .ai-insight,
+.theme-light .ai-recommendations,
+.theme-light .ai-summary {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.theme-light .insights-list,
+.theme-light .sub-insights {
+    color: var(--text-primary);
+}
+
+/* Fix spinner color in light mode */
+.theme-light .spinner {
+    border-color: rgba(0, 0, 0, 0.1);
+    border-left-color: var(--accent-primary);
 }

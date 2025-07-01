@@ -574,6 +574,30 @@ const uiController = (() => {
             }
         });
 
+        // Setup theme-aware editor behavior
+        const handleThemeChange = () => {
+            const isDarkTheme = document.body.classList.contains('theme-dark');
+            // Adjust editor styles based on theme if needed
+            if (inputText1 && inputText2) {
+                const editorBackground = isDarkTheme ? 'var(--bg-primary)' : 'var(--bg-primary)';
+                inputText1.style.background = editorBackground;
+                inputText2.style.background = editorBackground;
+            }
+        };
+
+        // Call once on init
+        handleThemeChange();
+
+        // Listen for theme changes
+        const themeObserver = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    handleThemeChange();
+                }
+            });
+        });
+        themeObserver.observe(document.body, { attributes: true });
+
         console.log("UI controller initialized");
     };
 

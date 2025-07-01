@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diff Checker Pro</title>
+    <title>Diff Checker</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/themes.css">
     <link rel="stylesheet" href="css/controls.css">
@@ -11,10 +11,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=SF+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add favicon -->
+    <link rel="icon" href="./DqHjgB33_400x400.jpg" type="image/png">
 </head>
 <body class="theme-dark accent-blue">
     <header>
-        <!-- Removed the title and description -->
+        <!-- Add GitHub logo and theme toggle -->
+        <div class="header-controls">
+            <a href="https://github.com/SumanReddy568/diffChecker" target="_blank" class="github-link">
+                <i class="fab fa-github"></i>
+            </a>
+            <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
     </header>
     
     <main class="container">
@@ -91,6 +101,7 @@
     <script src="js/ai-analysis.js"></script>
     <script src="js/ui-controller.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/theme-controller.js"></script>
     <script>
         // Set current year in the footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
