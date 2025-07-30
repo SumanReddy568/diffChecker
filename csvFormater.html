@@ -7,764 +7,7 @@
     <title>CSV Formatter Pro</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
     <link rel="icon" href="./DqHjgB33_400x400.jpg" type="image/png">
-    <style>
-        :root {
-            /* Dark Theme Variables */
-            --bg-primary: #0a0b0f;
-            --bg-secondary: #1a1d23;
-            --bg-tertiary: #252932;
-            --bg-quaternary: #2d3139;
-            --bg-accent: #363c47;
-            --text-primary: #ffffff;
-            --text-secondary: #b8bcc5;
-            --text-muted: #9ca3af;
-            --border-color: #3f4451;
-            --border-subtle: #2a2e36;
-            --accent-blue: #4f46e5;
-            --accent-blue-hover: #6366f1;
-            --accent-green: #059669;
-            --accent-green-hover: #10b981;
-            --accent-red: #dc2626;
-            --accent-red-hover: #ef4444;
-            --accent-yellow: #f59e0b;
-            --accent-yellow-hover: #fbbf24;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .theme-light {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-tertiary: #f1f5f9;
-            --bg-quaternary: #e2e8f0;
-            --bg-accent: #cbd5e1;
-            --text-primary: #1e293b;
-            --text-secondary: #475569;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --border-subtle: #f1f5f9;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            transition: all 0.3s ease;
-            min-height: 100vh;
-        }
-
-        /* Header Styles */
-        header {
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-
-        .header-controls {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 100vw;
-            margin: 0 auto;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .logo i {
-            color: var(--accent-blue);
-        }
-
-        /* Button Styles */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.625rem 1.25rem;
-            border: none;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .btn-primary {
-            background: var(--accent-blue);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-blue-hover);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-secondary {
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-quaternary);
-            transform: translateY(-1px);
-        }
-
-        .btn-success {
-            background: var(--accent-green);
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: var(--accent-green-hover);
-            transform: translateY(-1px);
-        }
-
-        .btn-danger {
-            background: var(--accent-red);
-            color: white;
-        }
-
-        .btn-danger:hover {
-            background: var(--accent-red-hover);
-            transform: translateY(-1px);
-        }
-
-        .btn-sm {
-            padding: 0.375rem 0.75rem;
-            font-size: 0.75rem;
-        }
-
-        .btn-icon {
-            padding: 0.625rem;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
-            color: var(--text-secondary);
-        }
-
-        .btn-icon:hover {
-            background: var(--bg-quaternary);
-            color: var(--text-primary);
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
-            padding: 0.625rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            background: var(--bg-quaternary);
-            color: var(--text-primary);
-        }
-
-        /* Main Container - Full Width */
-        main {
-            max-width: 100vw;
-            margin: 0;
-            padding: 2rem;
-            min-height: calc(100vh - 140px);
-        }
-
-        /* Card Styles - Full Width */
-        .card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 1rem;
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .card-header {
-            background: var(--bg-tertiary);
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .card-title {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .card-title i {
-            color: var(--accent-blue);
-        }
-
-        .card-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .card-content {
-            padding: 2rem;
-        }
-
-        /* Upload Area */
-        .upload-area {
-            border: 2px dashed var(--border-color);
-            border-radius: 0.75rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            background: var(--bg-tertiary);
-            transition: all 0.3s ease;
-            margin-bottom: 2rem;
-        }
-
-        .upload-area:hover {
-            border-color: var(--accent-blue);
-            background: var(--bg-quaternary);
-        }
-
-        .upload-area.dragover {
-            border-color: var(--accent-blue);
-            background: var(--bg-quaternary);
-            transform: scale(1.02);
-        }
-
-        .upload-icon {
-            font-size: 3rem;
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-        }
-
-        .upload-text {
-            font-size: 1.125rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .upload-hint {
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
-
-        .file-input {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* Controls Panel */
-        .controls-panel {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            display: none;
-        }
-
-        .controls-row {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        .controls-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .control-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .control-label {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        .form-select,
-        .form-input {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 0.375rem;
-            padding: 0.5rem 0.75rem;
-            color: var(--text-primary);
-            font-size: 0.875rem;
-            transition: all 0.2s ease;
-        }
-
-        .form-select:focus,
-        .form-input:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-        }
-
-        /* Table Styles */
-        .table-container {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 0.75rem;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-        }
-
-        .table-scroll {
-            overflow: auto;
-            max-height: 70vh;
-        }
-
-        .csv-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.875rem;
-        }
-
-        .csv-table th {
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-            padding: 1rem 0.75rem;
-            text-align: left;
-            font-weight: 600;
-            border-bottom: 2px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .csv-table td {
-            padding: 0.75rem;
-            border-bottom: 1px solid var(--border-subtle);
-            background: var(--bg-primary);
-            transition: all 0.2s ease;
-        }
-
-        .csv-table td:focus {
-            outline: 2px solid var(--accent-blue);
-            outline-offset: -2px;
-            background: var(--bg-secondary);
-        }
-
-        .csv-table tr:hover td {
-            background: var(--bg-secondary);
-        }
-
-        .csv-table td[contenteditable="true"] {
-            cursor: text;
-        }
-
-        .csv-table td[contenteditable="true"]:hover {
-            background: var(--bg-tertiary);
-        }
-
-        /* Column Actions */
-        .column-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            margin-left: 0.5rem;
-        }
-
-        .column-delete {
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-
-        .csv-table th:hover .column-delete {
-            opacity: 1;
-        }
-
-        /* Pagination */
-        .pagination {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: var(--bg-tertiary);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .pagination-info {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-
-        /* Info Panel */
-        .info-panel {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
-            padding: 0.75rem 1rem;
-            margin-bottom: 1rem;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-
-        /* Loading Spinner */
-        .loading-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem 2rem;
-            color: var(--text-secondary);
-        }
-
-        .spinner {
-            width: 3rem;
-            height: 3rem;
-            border: 3px solid var(--border-color);
-            border-top: 3px solid var(--accent-blue);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 1rem;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Placeholder Message */
-        .placeholder-message {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem 2rem;
-            color: var(--text-muted);
-            text-align: center;
-        }
-
-        .placeholder-message i {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: var(--accent-blue);
-            opacity: 0.5;
-        }
-
-        .placeholder-message p {
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .placeholder-message small {
-            font-size: 0.875rem;
-            opacity: 0.7;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
-
-        /* Notification */
-        .notification {
-            position: fixed;
-            top: 2rem;
-            left: 50%;
-            right: unset;
-            transform: translateX(-50%) scale(0.98);
-            max-width: 400px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: 0.75rem;
-            padding: 1rem 1.5rem;
-            box-shadow: var(--shadow-xl);
-            z-index: 1000;
-            display: none;
-            transition: transform 0.3s ease;
-        }
-
-        .notification.show {
-            transform: translateX(-50%) scale(1);
-        }
-
-        .notification.error {
-            background: var(--accent-red);
-            color: white;
-            border-color: var(--accent-red);
-        }
-
-        .notification.warning {
-            background: var(--accent-yellow);
-            color: var(--bg-primary);
-            border-color: var(--accent-yellow);
-        }
-
-        .notification.success {
-            background: var(--accent-green);
-            color: white;
-            border-color: var(--accent-green);
-        }
-
-        .notification-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-        }
-
-        .notification-icon {
-            flex-shrink: 0;
-            margin-top: 0.125rem;
-        }
-
-        .notification-message {
-            flex: 1;
-            line-height: 1.5;
-        }
-
-        .notification-close {
-            background: none;
-            border: none;
-            color: inherit;
-            cursor: pointer;
-            padding: 0.25rem;
-            border-radius: 0.25rem;
-            margin-left: 0.5rem;
-        }
-
-        .notification-close:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Confirmation Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.75);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(4px);
-        }
-
-        .modal-overlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .confirmation-modal {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 1rem;
-            padding: 2rem;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: var(--shadow-xl);
-            transform: scale(0.9) translateY(-20px);
-            transition: all 0.3s ease;
-        }
-
-        .modal-overlay.show .confirmation-modal {
-            transform: scale(1) translateY(0);
-        }
-
-        .modal-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-icon {
-            width: 3rem;
-            height: 3rem;
-            background: var(--accent-red);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.25rem;
-        }
-
-        .modal-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .modal-message {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        .modal-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: flex-end;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem;
-            }
-
-            main {
-                padding: 1rem;
-            }
-
-            .card-header {
-                padding: 1rem;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .card-content {
-                padding: 1rem;
-            }
-
-            .controls-row {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .control-group {
-                width: 100%;
-            }
-
-            .form-select,
-            .form-input {
-                width: 100%;
-            }
-
-            .csv-table {
-                font-size: 0.75rem;
-            }
-
-            .csv-table th,
-            .csv-table td {
-                padding: 0.5rem 0.375rem;
-            }
-
-            .notification {
-                top: 1rem;
-                right: 1rem;
-                left: 1rem;
-                max-width: none;
-            }
-
-            .confirmation-modal {
-                padding: 1.5rem;
-                width: 95%;
-            }
-
-            .modal-actions {
-                flex-direction: column;
-            }
-        }
-
-        /* Animation Classes */
-        .fade-in {
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .scale-in {
-            animation: scaleIn 0.2s ease;
-        }
-
-        @keyframes scaleIn {
-            from {
-                transform: scale(0.95);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/csvFormateer.css">
 </head>
 
 <body class="theme-dark">
@@ -819,28 +62,52 @@
 
                 <!-- Controls Panel -->
                 <div class="controls-panel" id="controls-panel">
-                    <div class="controls-row">
-                        <div class="control-group">
-                            <label class="control-label" for="filter-col">Filter Column:</label>
-                            <select id="filter-col" class="form-select"></select>
+                    <div style="display:flex;align-items:center;justify-content:space-between;">
+                        <div style="font-size:0.98em;color:var(--text-secondary);">
+                            <span id="csv-table-info-inline"></span>
                         </div>
-                        <div class="control-group">
-                            <input type="text" id="filter-value" placeholder="Enter filter value..." class="form-input">
-                        </div>
-                        <button id="apply-filter" class="btn btn-primary">
-                            <i class="fas fa-search"></i> Apply Filter
-                        </button>
-                        <button id="clear-filter" class="btn btn-secondary">
-                            <i class="fas fa-times"></i> Clear
+                        <button id="toggle-filter-panel" class="btn btn-secondary btn-sm" style="margin-left:auto;">
+                            <i class="fas fa-chevron-up"></i> <span id="toggle-filter-panel-label">Hide Filters</span>
                         </button>
                     </div>
-                    <div class="controls-row">
-                        <button id="add-col" class="btn btn-secondary">
-                            <i class="fas fa-plus"></i> Add Column
-                        </button>
-                        <button id="add-row" class="btn btn-secondary">
-                            <i class="fas fa-plus"></i> Add Row
-                        </button>
+                    <div id="filter-section">
+                        <div class="controls-row" style="flex-wrap:wrap; gap:1.5rem 2rem;">
+                            <div class="control-group">
+                                <label class="control-label" for="filter-col">Filter Column:</label>
+                                <select id="filter-col" class="form-select"></select>
+                            </div>
+                            <div class="control-group">
+                                <input type="text" id="filter-value" placeholder="Enter filter value..." class="form-input" list="filter-value-list">
+                                <datalist id="filter-value-list"></datalist>
+                            </div>
+                            <button id="apply-filter" class="btn btn-primary">
+                                <i class="fas fa-search"></i> Apply Filter
+                            </button>
+                            <button id="clear-filter" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Clear
+                            </button>
+                        </div>
+                        <div class="controls-row" style="flex-wrap:wrap; gap:1.5rem 2rem;">
+                            <button id="add-col" class="btn btn-secondary">
+                                <i class="fas fa-plus"></i> Add Column
+                            </button>
+                            <button id="add-row" class="btn btn-secondary">
+                                <i class="fas fa-plus"></i> Add Row
+                            </button>
+                            <button id="new-file" class="btn btn-primary" title="Upload a new CSV file">
+                                <i class="fas fa-file-upload"></i> New File
+                            </button>
+                            <button id="clear-local-storage" class="btn btn-danger" title="Clear all CSV data and local storage">
+                                <i class="fas fa-trash-alt"></i> Clear Local Data
+                            </button>
+                        </div>
+                        <div class="controls-row" style="flex-direction:column;align-items:stretch;gap:0.5rem;">
+                            <div style="display:flex;align-items:center;gap:1rem;width:100%;">
+                                <input type="text" id="csv-search" class="form-input" style="flex:1;min-width:220px;font-size:1.08em;padding:0.75em 1em;" placeholder="Search in all columns...">
+                                <button id="csv-search-btn" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+                                <button id="csv-search-clear" class="btn btn-secondary"><i class="fas fa-times"></i> Clear Search</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1049,6 +316,39 @@
             document.addEventListener('keydown', handleEscape);
         }
 
+        // Show notification with confirm/cancel actions (re-uses notification popup)
+        function showConfirmNotification(message, onConfirm, onCancel) {
+            const notification = document.getElementById('notification');
+            const messageEl = notification.querySelector('.notification-message');
+            const iconEl = notification.querySelector('.notification-icon i');
+            messageEl.innerHTML = message +
+                `<div style="margin-top:14px;">
+                    <button id="notif-confirm-yes" class="btn btn-danger" style="margin-right:12px;">Yes</button>
+                    <button id="notif-confirm-no" class="btn btn-secondary">Cancel</button>
+                </div>`;
+            notification.className = 'notification center-top';
+            iconEl.className = 'fas fa-exclamation-triangle';
+            notification.style.left = '50%';
+            notification.style.right = 'unset';
+            notification.style.transform = 'translateX(-50%) scale(1)';
+            notification.style.display = 'block';
+            notification.classList.add('show');
+            if (notification._timeout) clearTimeout(notification._timeout);
+
+            setTimeout(() => {
+                document.getElementById('notif-confirm-yes').onclick = function () {
+                    notification.classList.remove('show');
+                    notification.style.display = 'none';
+                    if (onConfirm) onConfirm();
+                };
+                document.getElementById('notif-confirm-no').onclick = function () {
+                    notification.classList.remove('show');
+                    notification.style.display = 'none';
+                    if (onCancel) onCancel();
+                };
+            }, 0);
+        }
+
         // CSV Formatter Logic
         let csvData = [];
         let filteredData = [];
@@ -1205,6 +505,7 @@
                 option.textContent = header;
                 filterColSelect.appendChild(option);
             });
+            updateFilterValueList();
         }
 
         function applyFilter() {
@@ -1439,14 +740,34 @@
             }
         }
 
+        // Expand/Collapse filter panel logic
+        const filterSection = document.getElementById('filter-section');
+        const toggleFilterPanelBtn = document.getElementById('toggle-filter-panel');
+        const toggleFilterPanelLabel = document.getElementById('toggle-filter-panel-label');
+        let filterPanelExpanded = true;
+        toggleFilterPanelBtn.addEventListener('click', function () {
+            filterPanelExpanded = !filterPanelExpanded;
+            if (filterPanelExpanded) {
+                filterSection.style.display = '';
+                toggleFilterPanelBtn.querySelector('i').className = 'fas fa-chevron-up';
+                toggleFilterPanelLabel.textContent = 'Hide Filters';
+            } else {
+                filterSection.style.display = 'none';
+                toggleFilterPanelBtn.querySelector('i').className = 'fas fa-chevron-down';
+                toggleFilterPanelLabel.textContent = 'Show Filters';
+            }
+        });
+
         function updateTableInfo() {
+            const infoInline = document.getElementById('csv-table-info-inline');
             if (filteredData.length === 0) {
+                infoInline.textContent = '';
                 csvTableInfo.style.display = 'none';
                 return;
             }
-
-            csvTableInfo.style.display = 'block';
-            csvTableInfo.textContent = `Showing ${filteredData.length} of ${csvData.length} rows • ${headers.length} columns`;
+            const info = `Showing ${filteredData.length} of ${csvData.length} rows • ${headers.length} columns`;
+            infoInline.textContent = info;
+            csvTableInfo.style.display = 'none';
         }
 
         function downloadCSV() {
@@ -1563,6 +884,28 @@
             }
         });
 
+        // Add Clear Local Storage Button Logic (now uses notification popup)
+        document.getElementById('clear-local-storage').addEventListener('click', function () {
+            showConfirmNotification(
+                'Are you sure you want to clear all CSV data and local storage? This will remove all loaded/edited data and allow you to upload a new file.',
+                function () {
+                    resetState();
+                    showNotification('All CSV data and local storage cleared.', 'success');
+                }
+            );
+        });
+
+        // Add New File Button Logic
+        document.getElementById('new-file').addEventListener('click', function () {
+            showConfirmNotification(
+                'Are you sure you want to start a new file? This will clear all current data and allow you to upload a new CSV file.',
+                function () {
+                    resetState();
+                    showNotification('Ready for new file upload.', 'success');
+                }
+            );
+        });
+
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             if (!loadState()) {
@@ -1578,6 +921,66 @@
 
         // Global function for column deletion (called from onclick)
         window.deleteColumn = deleteColumn;
+
+        const searchInput = document.getElementById('csv-search');
+        const searchBtn = document.getElementById('csv-search-btn');
+        const searchClearBtn = document.getElementById('csv-search-clear');
+        const filterValueList = document.getElementById('filter-value-list');
+
+        // --- Filter Value Suggestions ---
+        function updateFilterValueList() {
+            filterValueList.innerHTML = '';
+            const colIdx = parseInt(filterColSelect.value, 10);
+            if (isNaN(colIdx) || colIdx < 0 || colIdx >= headers.length) return;
+            // Get unique values for the selected column from csvData
+            const uniqueValues = new Set();
+            csvData.forEach(row => {
+                if (row[colIdx] !== undefined && row[colIdx] !== '') {
+                    uniqueValues.add(row[colIdx]);
+                }
+            });
+            Array.from(uniqueValues).sort().forEach(val => {
+                const opt = document.createElement('option');
+                opt.value = val;
+                filterValueList.appendChild(opt);
+            });
+        }
+
+        filterColSelect.addEventListener('change', updateFilterValueList);
+        filterValueInput.addEventListener('focus', updateFilterValueList);
+
+        // --- CSV Search Functionality ---
+        function searchCsv() {
+            const query = searchInput.value.trim().toLowerCase();
+            if (!query) {
+                filteredData = applyCurrentFilter();
+                renderTable();
+                updateTableInfo();
+                saveState();
+                return;
+            }
+            // Search in all columns, on the filteredData (after filter)
+            const baseData = applyCurrentFilter();
+            filteredData = baseData.filter(row =>
+                row.some(cell => (cell || '').toString().toLowerCase().includes(query))
+            );
+            currentPageStart = 0;
+            renderTable();
+            updateTableInfo();
+            saveState();
+        }
+
+        searchBtn.addEventListener('click', searchCsv);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') searchCsv();
+        });
+        searchClearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            filteredData = applyCurrentFilter();
+            renderTable();
+            updateTableInfo();
+            saveState();
+        });
     </script>
 </body>
 
